@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Robert Khabibullin](https://up.htmlacademy.ru/javascript/25/user/1836919).
-* Наставник: `Неизвестно`.
+* Наставник: [Анастасия Васинская](https://up.htmlacademy.ru/adaptive/24/user/811447).
 
 ---
 
