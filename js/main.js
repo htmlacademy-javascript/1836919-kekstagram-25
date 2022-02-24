@@ -1,21 +1,17 @@
 const getRandomNumber = (min, max) => {
-  max = Math.abs(max);
-  min = Math.abs(min);
-  if (max > min) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  const absMax = Math.abs(max);
+  const absMin = Math.abs(min);
+  if (absMax > absMin) {
+    return Math.floor(Math.random() * (absMax - absMin + 1)) + absMin;
   }
 
-  return Math.floor(Math.random() * (min - max + 1)) + max;
+  return Math.floor(Math.random() * (absMin - absMax + 1)) + absMax;
 };
 
 const getMaxLine = (value, maxLengthLine) => {
-  value = String(value);
-  if (value.length < maxLengthLine) {
-    return true;
-  }
-
-  return false;
+  stringValue = String(value);
+  return stringValue.length < maxLengthLine;
 };
 
-getRandomNumber(10, 20);
+getRandomNumber(10, 13);
 getMaxLine('Hello, World', 20);
