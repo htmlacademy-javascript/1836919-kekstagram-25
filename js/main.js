@@ -12,10 +12,10 @@ const getMaxLine = (value, maxLengthLine) => {
   value = String(value);
   if (value.length < maxLengthLine) {
     return true;
-  };
+  }
 
   return false;
-}
+};
 
 getRandomNumber(10, 20);
 getMaxLine('Hello, World', 20);
