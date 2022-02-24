@@ -1,6 +1,4 @@
-'use strict'
-
-let getRandomNumber = (min, max) => {
+const getRandomNumber = (min, max) => {
   max = Math.abs(max);
   min = Math.abs(min);
   if (max > min) {
@@ -8,9 +6,9 @@ let getRandomNumber = (min, max) => {
   }
 
   return Math.floor(Math.random() * (min - max + 1)) + max;
-}
+};
 
-let getMaxLine = (value, maxLengthLine) => value.length < maxLengthLine ? true : false;
+const getMaxLine = (value, maxLengthLine) => value.length < maxLengthLine ? true : false;
 
 getRandomNumber(10, 20);
 getMaxLine('Привет, мир!', 20);
