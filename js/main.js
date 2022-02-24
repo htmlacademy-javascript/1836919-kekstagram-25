@@ -8,7 +8,14 @@ const getRandomNumber = (min, max) => {
   return Math.floor(Math.random() * (min - max + 1)) + max;
 };
 
-const getMaxLine = (value, maxLengthLine) => value.length < maxLengthLine ? true : false;
+const getMaxLine = (value, maxLengthLine) => {
+  value = String(value);
+  if (value.length < maxLengthLine) {
+    return true;
+  };
+
+  return false;
+}
 
 getRandomNumber(10, 20);
-getMaxLine('Привет, мир!', 20);
+getMaxLine('Hello, World', 20);
