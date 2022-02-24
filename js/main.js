@@ -9,7 +9,7 @@ const getRandomNumber = (min, max) => {
 };
 
 const getMaxLine = (value, maxLengthLine) => {
-  stringValue = String(value);
+  const stringValue = String(value);
   return stringValue.length < maxLengthLine;
 };
 
