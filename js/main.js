@@ -40,18 +40,24 @@ const getRandomNumber = (min, max) => {
   return Math.floor(result);
 };
 
-const getRandomArrayElement = (elements) => {
-  return elements[getRandomNumber(0, elements.length - 1)];
-};
+const getRandomArrayElement = (elements) => elements[getRandomNumber(0, elements.length - 1)];
 
-const getRandomUniqueNumber = () => {
-  return Math.floor(Math.random() * new Date());
-}
+const getRandomUniqueNumber = () => Math.floor(Math.random() * new Date());
 
 // const checkStringLength = (value, maxLengthLine) => {
 //   const stringValue = String(value);
 //   return stringValue.length <= maxLengthLine;
 // };
+
+const createUserComment = () => {
+  const comments = {
+    id: getRandomUniqueNumber(),
+    avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
+    message: getRandomArrayElement(COMMENT_PICTURE),
+    name: getRandomArrayElement(NAMES_AUTHOR_COMMENTS),
+  };
+  return comments;
+};
 
 const createUserPicture = (currientElement, currientId) => {
   ++currientId;
@@ -61,22 +67,8 @@ const createUserPicture = (currientElement, currientId) => {
     description: getRandomArrayElement(DESCRIPTION_PICTURE),
     likes: getRandomNumber(15, 200),
     comments: Array.from({ length: getRandomNumber(1, 40) }, createUserComment)
-  }
+  };
 };
 
-const createUserComment = () => {
-  return {
-    id: getRandomUniqueNumber(),
-    avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
-    message: getRandomArrayElement(COMMENT_PICTURE),
-    name: getRandomArrayElement(NAMES_AUTHOR_COMMENTS),
-  }
-};
-
-const similarPictures = Array.from({length: SIMILAR_PICTURE_COUNT}, createUserPicture);
-
-console.log(similarPictures);
-
-
-
+Array.from({length: SIMILAR_PICTURE_COUNT}, createUserPicture);
 
