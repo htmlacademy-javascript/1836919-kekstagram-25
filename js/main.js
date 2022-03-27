@@ -1,4 +1,5 @@
 import './data.js';
+import './preview.js';
 // import {createUserPictures} from './data.js';
 
 // console.log(createUserPictures());
