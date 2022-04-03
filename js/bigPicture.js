@@ -9,44 +9,43 @@ const bigPictureClouse = document.querySelector('.big-picture__cancel');
 const likesCount = document.querySelector('.likes-count');
 const commentsCount = document.querySelector('.comments-count');
 const socialComments = document.querySelector('.social__comments');
+const socialComment = document.querySelector('.social__comment');
 const socialCaption = document.querySelector('.social__caption');
+
+const commentsListFragment = document.createDocumentFragment();
 
 const socialCommentCount = document.querySelector('.social__comment-count');
 const commentsLoader = document.querySelector('.comments-loader');
 
-
-const addPreviewClickHandler = function(picture) {
+pictures.forEach((picture) => {
   picture.addEventListener('click', () => {
+    const elementPictureImg = picture.querySelector('.picture__img');
+
     bigPicture.classList.remove('hidden');
     socialCommentCount.classList.add('hidden');
     commentsLoader.classList.add('hidden');
     bodyModal.classList.add('modal-open');
-    bigPictureImg.src = picture.querySelector('.picture__img').getAttribute('src');
-    bigPictureImg.alt = picture.querySelector('.picture__img').getAttribute('alt');
-    socialCaption.textContent = picture.querySelector('.picture__img').getAttribute('alt');
+    bigPictureImg.src = elementPictureImg.src;
+    bigPictureImg.alt = elementPictureImg.alt;
+    socialCaption.textContent = elementPictureImg.alt;
     likesCount.textContent = picture.querySelector('.picture__likes').textContent;
     commentsCount.textContent = picture.querySelector('.picture__comments').textContent;
 
-    const idPreviewPicture = picture.querySelector('img').getAttribute('id');
+    const idPreviewPicture = picture.querySelector('img').id;
     socialComments.innerHTML = '';
 
     similarPictures.find((authorComment) => String(authorComment.id) === idPreviewPicture).comments.forEach(({avatar, name, message}) => {
-      bigPicture.querySelector('.social__comments').insertAdjacentHTML('beforeend', `
-            <li class="social__comment">
-              <img
-                class="social__picture"
-                src="${avatar}"
-                alt="${name}"
-                width="35" height="35">
-              <p class="social__text">${message}</p>
-            </li>`);
+      const elementComment = socialComment.cloneNode(true);
+      const commentImg = elementComment.querySelector('.social__picture');
+      const commentText = elementComment.querySelector('.social__text');
+      commentImg.src = avatar;
+      commentImg.alt = name;
+      commentText.textContent = message;
+      commentsListFragment.appendChild(elementComment);
     });
+    socialComments.appendChild(commentsListFragment);
   });
-};
-
-for (const picture of pictures) {
-  addPreviewClickHandler(picture);
-}
+});
 
 bigPictureClouse.addEventListener('click', () => {
   bigPicture.classList.add('hidden');
