@@ -1,5 +1,7 @@
 import {similarPictures} from './preview.js';
 
+const COMMENTS_COUNT = 5;
+
 const bodyModal = document.querySelector('body');
 const pictures = document.querySelectorAll('.picture');
 const bigPicture = document.querySelector('.big-picture');
@@ -12,18 +14,15 @@ const socialComments = document.querySelector('.social__comments');
 const socialComment = document.querySelector('.social__comment');
 const socialCaption = document.querySelector('.social__caption');
 
-const commentsListFragment = document.createDocumentFragment();
-
 const socialCommentCount = document.querySelector('.social__comment-count');
 const commentsLoader = document.querySelector('.comments-loader');
+const commentsCurrent = document.querySelector('.comments-current');
 
 pictures.forEach((picture) => {
   picture.addEventListener('click', () => {
+    let current = COMMENTS_COUNT;
     const elementPictureImg = picture.querySelector('.picture__img');
-
     bigPicture.classList.remove('hidden');
-    socialCommentCount.classList.add('hidden');
-    commentsLoader.classList.add('hidden');
     bodyModal.classList.add('modal-open');
     bigPictureImg.src = elementPictureImg.src;
     bigPictureImg.alt = elementPictureImg.alt;
@@ -34,16 +33,45 @@ pictures.forEach((picture) => {
     const idPreviewPicture = picture.querySelector('img').id;
     socialComments.innerHTML = '';
 
-    similarPictures.find((authorComment) => String(authorComment.id) === idPreviewPicture).comments.forEach(({avatar, name, message}) => {
-      const elementComment = socialComment.cloneNode(true);
-      const commentImg = elementComment.querySelector('.social__picture');
-      const commentText = elementComment.querySelector('.social__text');
-      commentImg.src = avatar;
-      commentImg.alt = name;
-      commentText.textContent = message;
-      commentsListFragment.appendChild(elementComment);
+    const comments = similarPictures.find((authorComment) => String(authorComment.id) === idPreviewPicture).comments;
+    if (comments.length <= COMMENTS_COUNT) {
+      current = comments.length;
+    }
+
+    const renderComments = (commentArray) => {
+      socialComments.innerHTML = '';
+      const commentsListFragment = document.createDocumentFragment();
+      commentArray.forEach(({avatar, name, message}) => {
+        const elementComment = socialComment.cloneNode(true);
+        const commentImg = elementComment.querySelector('.social__picture');
+        const commentText = elementComment.querySelector('.social__text');
+        commentImg.src = avatar;
+        commentImg.alt = name;
+        commentText.textContent = message;
+        commentsListFragment.appendChild(elementComment);
+      });
+      socialComments.appendChild(commentsListFragment);
+    };
+
+    const addComments = () => {
+      if (current > comments.length) {
+        current = comments.length;
+      }
+      renderComments(comments.slice(0, current));
+      if (current >= comments.length) {
+        commentsLoader.classList.add('hidden');
+      } else {
+        commentsLoader.classList.remove('hidden');
+      }
+      commentsCurrent.textContent = current;
+    };
+
+    commentsLoader.addEventListener('click', () => {
+      current += COMMENTS_COUNT;
+      addComments();
     });
-    socialComments.appendChild(commentsListFragment);
+
+    addComments();
   });
 });
 
