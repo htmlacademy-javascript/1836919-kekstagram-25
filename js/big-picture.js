@@ -14,7 +14,6 @@ const socialComments = document.querySelector('.social__comments');
 const socialComment = document.querySelector('.social__comment');
 const socialCaption = document.querySelector('.social__caption');
 
-const socialCommentCount = document.querySelector('.social__comment-count');
 const commentsLoader = document.querySelector('.comments-loader');
 const commentsCurrent = document.querySelector('.comments-current');
 
