@@ -17,7 +17,7 @@ const getRandomIds = (array, number) => {
 };
 
 
-const activeFilters = (pictures) => {
+const getActiveFilter = (pictures) => {
   const filters = document.querySelector('.img-filters');
   const filterDefault = filters.querySelector('#filter-default');
   const filterRandom = filters.querySelector('#filter-random');
@@ -27,7 +27,7 @@ const activeFilters = (pictures) => {
 
   filters.classList.remove('img-filters--inactive');
 
-  const disactiveButton = () => {
+  const getInactiveButton = () => {
     const imgFiltersButtonActive = filters.querySelector('.img-filters__button--active');
     if (imgFiltersButtonActive) {
       imgFiltersButtonActive.classList.remove('img-filters__button--active');
@@ -36,13 +36,13 @@ const activeFilters = (pictures) => {
 
 
   filterDefault.addEventListener('click', () => {
-    disactiveButton();
+    getInactiveButton();
     filterDefault.classList.add('img-filters__button--active');
     renderSimilarList(pictures);
   });
 
   filterRandom.addEventListener('click', () => {
-    disactiveButton();
+    getInactiveButton();
     filterRandom.classList.add('img-filters__button--active');
     const ids = getRandomIds(pictures, COUNT_RANDOM_PICTURES);
     const randomPictures = [];
@@ -53,12 +53,12 @@ const activeFilters = (pictures) => {
   });
 
   filterDiscussed.addEventListener('click', () => {
-    disactiveButton();
+    getInactiveButton();
     filterDiscussed.classList.add('img-filters__button--active');
     const discussedPictures = pictures.slice().sort((a, b) => b.comments.length - a.comments.length);
     renderSimilarList(discussedPictures);
   });
 };
 
-export {activeFilters};
+export {getActiveFilter};
 

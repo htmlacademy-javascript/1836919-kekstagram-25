@@ -3,9 +3,8 @@ const getData = (onSuccess, onFail) => {
     .then((response) => {
       if (response.ok) {
         return response.json();
-      } else {
-        throw new Error('Не удалось загрузить данные!');
       }
+      throw new Error('Не удалось загрузить данные!');
     })
     .then((pictures) => {
       onSuccess(pictures);
