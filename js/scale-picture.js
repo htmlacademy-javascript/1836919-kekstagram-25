@@ -9,6 +9,7 @@ const pictureUploadScale = document.querySelector('.img-upload__scale');
 
 let valueScale = SCALE_MAX;
 
+// scaleControlValue.value.innerHTML = '';
 scaleControlValue.value = `${SCALE_MAX}%`;
 
 effectLevel.classList.add('hidden');
@@ -29,5 +30,12 @@ const onPictureScale = (evt) => {
   pictureUploadPreview.style.transform = `scale(${(valueScale / 100)})`;
 };
 
+const resetScale = () => {
+  valueScale = SCALE_MAX;
+  scaleControlValue.value = `${SCALE_MAX}%`;
+  pictureUploadPreview.style.transform = 'scale(1)';
+};
+
 pictureUploadScale.addEventListener('click', onPictureScale);
 
+export {resetScale};

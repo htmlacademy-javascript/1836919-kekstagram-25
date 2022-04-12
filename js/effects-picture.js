@@ -109,21 +109,27 @@ noUiSlider.create(effectLevelSlider, {
 const onEffectsList = (evt) => {
   imgUploadPreview.classList = '';
   if (evt.target.id === 'effect-none') {
-    effectLevel .classList.add('hidden');
+    effectLevel.classList.add('hidden');
     imgUploadPreview.style.filter = 'none';
   } else {
-    effectLevel .classList.remove('hidden');
-    effectLevelSlider .noUiSlider.updateOptions(FILTERS_EFFECT[evt.target.id].noUiSlider);
+    effectLevel.classList.remove('hidden');
+    effectLevelSlider.noUiSlider.updateOptions(FILTERS_EFFECT[evt.target.id].noUiSlider);
     imgUploadPreview.classList.add(`effects__preview--${FILTERS_EFFECT[evt.target.id].class}`);
   }
 };
 
+const resetEffects = () => {
+  effectLevel.classList.add('hidden');
+  imgUploadPreview.style.filter = 'none';
+};
+
 effectLevelSlider .noUiSlider.on('update', () => {
   const selectedFilter = effectsList.querySelector('input:checked').id;
-  const sliderValue = effectLevelSlider .noUiSlider.get();
+  const sliderValue = effectLevelSlider.noUiSlider.get();
   effectLevelValue.value = sliderValue;
   imgUploadPreview.style.filter = `${FILTERS_EFFECT[selectedFilter].filter}(${sliderValue}${FILTERS_EFFECT[selectedFilter].unit})`;
 });
 
 effectsList.addEventListener('change', onEffectsList);
 
+export {resetEffects};
