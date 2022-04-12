@@ -32,9 +32,4 @@ const showAlert = (message) => {
   }, 5000);
 };
 
-// const checkStringLength = (value, maxLengthLine) => {
-//   const stringValue = String(value);
-//   return stringValue.length <= maxLengthLine;
-// };
-
 export {getRandomNumber, getRandomArrayElement, getRandomUniqueNumber, isEscapeKey, showAlert};
