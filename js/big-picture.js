@@ -40,10 +40,10 @@ const watchBigPicture = (picture, pictures) => {
     current = comments.length;
   }
 
-  const renderComments = (commentArray) => {
+  const renderComments = (arrayComments) => {
     socialComments.innerHTML = '';
     const commentsListFragment = document.createDocumentFragment();
-    commentArray.forEach(({avatar, name, message}) => {
+    arrayComments.forEach(({avatar, name, message}) => {
       const elementComment = socialComment.cloneNode(true);
       const commentImg = elementComment.querySelector('.social__picture');
       const commentText = elementComment.querySelector('.social__text');

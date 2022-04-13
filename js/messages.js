@@ -14,39 +14,39 @@ errorTemplate.classList.add('hidden');
 body.appendChild(successTemplate);
 body.appendChild(errorTemplate);
 
-const hideSuccessMessage = () => {
+const onHideSuccessMessage = () => {
   successTemplate.classList.add('hidden');
   document.removeEventListener('keydown', onEscapePressSuccess);
 };
 
-const hideErrorMessage = () => {
+const onHideErrorMessage = () => {
   errorTemplate.classList.add('hidden');
   document.removeEventListener('keydown', onEscapePressError);
 };
 
 function onEscapePressSuccess(evt) {
   if(isEscapeKey(evt)) {
-    hideSuccessMessage();
+    onHideSuccessMessage();
   }
 }
 
 function onEscapePressError(evt) {
   if(isEscapeKey(evt)) {
-    hideErrorMessage();
+    onHideErrorMessage();
   }
 }
 
 const showSuccesMessage = () => {
   successTemplate.classList.remove('hidden');
 
-  successTemplate.addEventListener('click', hideSuccessMessage);
+  successTemplate.addEventListener('click', onHideSuccessMessage);
   document.addEventListener('keydown', onEscapePressSuccess);
 };
 
 const showErrorMessage = () => {
   errorTemplate.classList.remove('hidden');
 
-  errorTemplate.addEventListener('click', hideErrorMessage);
+  errorTemplate.addEventListener('click', onHideErrorMessage);
   document.addEventListener('keydown', onEscapePressError);
 };
 
