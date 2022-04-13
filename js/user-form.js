@@ -4,6 +4,8 @@ import {resetScale} from './scale-picture.js';
 import {resetEffects} from './effects-picture.js';
 import {showSuccesMessage, showErrorMessage} from './messages.js';
 
+const MAX_HASHTAGS = 5;
+
 const bodyModal = document.querySelector('body');
 const uploadFile = document.querySelector('#upload-file');
 const imgUploadForm = document.querySelector('.img-upload__form');
@@ -29,7 +31,7 @@ const pristine = new Pristine(imgUploadForm, {
 
 const validateLengthHashtags = (value) => {
   const length = value.split(' ').length;
-  return length <= 5;
+  return length <= MAX_HASHTAGS;
 };
 
 const validateTextHashtags = (value) => {

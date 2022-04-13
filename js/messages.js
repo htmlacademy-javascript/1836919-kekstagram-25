@@ -14,7 +14,6 @@ errorTemplate.classList.add('hidden');
 body.appendChild(successTemplate);
 body.appendChild(errorTemplate);
 
-
 const hideSuccessMessage = () => {
   successTemplate.classList.add('hidden');
   document.removeEventListener('keydown', onEscapePressSuccess);
