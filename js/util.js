@@ -5,10 +5,6 @@ const getRandomNumber = (min, max) => {
   return Math.floor(result);
 };
 
-const getRandomArrayElement = (elements) => elements[getRandomNumber(0, elements.length - 1)];
-
-const getRandomUniqueNumber = () => Math.floor(Math.random() * new Date());
-
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
 const showAlert = (message) => {
@@ -32,4 +28,4 @@ const showAlert = (message) => {
   }, 5000);
 };
 
-export {getRandomNumber, getRandomArrayElement, getRandomUniqueNumber, isEscapeKey, showAlert};
+export {getRandomNumber, isEscapeKey, showAlert};
