@@ -1,9 +1,3 @@
-const effectLevel = document.querySelector('.effect-level');
-const effectLevelSlider = effectLevel.querySelector('.effect-level__slider');
-const effectLevelValue = effectLevel.querySelector('.effect-level__value');
-const effectsList = document.querySelector('.effects__list');
-const imgUploadPreview = document.querySelector('.img-upload__preview img');
-
 const FILTERS_EFFECT = {
   'effect-none': {
     filter: 'none',
@@ -84,6 +78,12 @@ const FILTERS_EFFECT = {
     }
   }
 };
+
+const effectLevel = document.querySelector('.effect-level');
+const effectLevelSlider = effectLevel.querySelector('.effect-level__slider');
+const effectLevelValue = effectLevel.querySelector('.effect-level__value');
+const effectsList = document.querySelector('.effects__list');
+const imgUploadPreview = document.querySelector('.img-upload__preview img');
 
 noUiSlider.create(effectLevelSlider, {
   range: {
