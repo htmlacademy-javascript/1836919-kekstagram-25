@@ -17,11 +17,7 @@ const getRandomIds = (array, number) => {
 };
 
 
-<<<<<<< HEAD
-const getActiveFilter = (pictures) => {
-=======
 const activeFilters = (pictures) => {
->>>>>>> 598cda26a6f858fbb79cba7fb0d99ebfd955c878
   const filters = document.querySelector('.img-filters');
   const filterDefault = filters.querySelector('#filter-default');
   const filterRandom = filters.querySelector('#filter-random');
@@ -31,11 +27,7 @@ const activeFilters = (pictures) => {
 
   filters.classList.remove('img-filters--inactive');
 
-<<<<<<< HEAD
-  const getInactiveButton = () => {
-=======
   const disactiveButton = () => {
->>>>>>> 598cda26a6f858fbb79cba7fb0d99ebfd955c878
     const imgFiltersButtonActive = filters.querySelector('.img-filters__button--active');
     if (imgFiltersButtonActive) {
       imgFiltersButtonActive.classList.remove('img-filters__button--active');
@@ -44,21 +36,13 @@ const activeFilters = (pictures) => {
 
 
   filterDefault.addEventListener('click', () => {
-<<<<<<< HEAD
-    getInactiveButton();
-=======
     disactiveButton();
->>>>>>> 598cda26a6f858fbb79cba7fb0d99ebfd955c878
     filterDefault.classList.add('img-filters__button--active');
     renderSimilarList(pictures);
   });
 
   filterRandom.addEventListener('click', () => {
-<<<<<<< HEAD
-    getInactiveButton();
-=======
     disactiveButton();
->>>>>>> 598cda26a6f858fbb79cba7fb0d99ebfd955c878
     filterRandom.classList.add('img-filters__button--active');
     const ids = getRandomIds(pictures, COUNT_RANDOM_PICTURES);
     const randomPictures = [];
@@ -69,20 +53,12 @@ const activeFilters = (pictures) => {
   });
 
   filterDiscussed.addEventListener('click', () => {
-<<<<<<< HEAD
-    getInactiveButton();
-=======
     disactiveButton();
->>>>>>> 598cda26a6f858fbb79cba7fb0d99ebfd955c878
     filterDiscussed.classList.add('img-filters__button--active');
     const discussedPictures = pictures.slice().sort((a, b) => b.comments.length - a.comments.length);
     renderSimilarList(discussedPictures);
   });
 };
 
-<<<<<<< HEAD
-export {getActiveFilter};
-=======
 export {activeFilters};
->>>>>>> 598cda26a6f858fbb79cba7fb0d99ebfd955c878
 
